@@ -5,8 +5,8 @@ function name() {
     console.log("L");
     console.log("O");
 }
-function addTwoNumbers(number1, number2) {
-    console.log(number1 + number2);
+function multiplyTwoNumbers(number1, number2) {
+    console.log(number1 * number2);
 
 }
-addTwoNumbers(12, 7);    
+multiplyTwoNumbers(12, 7); 

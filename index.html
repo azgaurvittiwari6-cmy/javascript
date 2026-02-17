@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Local Storage Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f4f4f4;
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Local Storage Demo</h1>
+
+    <input type="text" id="username" placeholder="Enter your name">
+    <br><br>
+
+    <button onclick="saveData()">Save</button>
+    <button onclick="loadData()">Show Saved Data</button>
+    <button onclick="deleteData()">Delete Data</button>
+    <button onclick="clearAll()">Clear All</button>
+
+    <div id="output"></div>
+
+<script>
+
+    // Save Data
+    function saveData(){
+        let name = document.getElementById("username").value;
+
+        if(name === ""){
+            alert("Please enter your name first!");
+            return;
+        }
+
+        localStorage.setItem("username", name);
+
+        alert(`Thank you ${name}, your data is saved!`);
+        document.getElementById("username").value = "";
+    }
+
+    // Load Data Automatically When Page Loads
+    window.onload = function(){
+        loadData();
+    }
+
+    // Show Saved Data
+    function loadData(){
+        let savedName = localStorage.getItem("username");
+
+        if(savedName){
+            document.getElementById("output").innerText =
+                `Saved Name: ${savedName}`;
+        } else {
+            document.getElementById("output").innerText =
+                "No data found in Local Storage.";
+        }
+    }
+
+    // Delete Specific Data
+    function deleteData(){
+        localStorage.removeItem("username");
+        document.getElementById("output").innerText =
+            "Username data deleted!";
+    }
+
+    // Clear All Local Storage
+    function clearAll(){
+        localStorage.clear();
+        document.getElementById("output").innerText =
+            "All local storage data cleared!";
+    }
+
+</script>
+
+</body>
+</html>
